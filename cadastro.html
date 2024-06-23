@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="stylesLoginCadastro.css">
+</head>
+
+<body>
+    <main class="cadastro-container">
+        <h2>Cadastro</h2>
+        <form id="cadastroForm">
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="nome" id="nome" name="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="cpf">CPF:</label>
+                <input type="cpf" id="cpf" name="cpf" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirmar Senha:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+            <nav>
+                <button type="submit">Cadastrar</button>
+            </nav>
+        </form>
+        <nav>
+            <a href="index.html">Já tem conta? Entrar</a>
+        </nav>
+    </main>
+    <script>
+        document.getElementById('cadastroForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const id = '_' + Math.random().toString(36).substr(2, 9);
+            const username = document.getElementById('nome').value;
+            const cpf = document.getElementById('cpf').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const date = new Date().toLocaleString();
+
+            if (password !== confirmPassword) {
+                alert('As senhas não conferem!');
+                return;
+            }
+
+            const user = { id, date, username, cpf, email, password };
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            users.push(user);
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            alert('Usuário cadastrado com sucesso!');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+
+</html>

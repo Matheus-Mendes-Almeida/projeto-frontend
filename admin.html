@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Cadastro de Usuários</title>
+    <link rel="stylesheet" href="stylesAdmin.css">
+</head>
+<body style="flex-direction: column;">
+    <main class="admin-container">
+        <section>
+            <h2>Novo Usuário</h2>
+            <form id="userForm">
+                <div class="form-group">
+                    <label for="nome">Nome do Usuário:</label>
+                    <input type="nome" id="nome" name="nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="cpf">CPF:</label>
+                    <input type="cpf" id="cpf" name="cpf" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="button-group">
+                    <button type="submit">Cadastrar</button>
+                    <button type="button" id="clearForm">Limpar</button>
+                </div>
+            </form>
+            <h2>Usuários Cadastrados</h2>
+            <div class="search-container">
+                <input type="text" id="search" placeholder="Pesquisar...">
+                <button type="button" id="clearAll">Excluir Todos</button>
+            </div>
+            <ul id="userList"></ul>
+        </section>
+        <nav>
+            <ul>
+                <li><a href="index.html">Voltar</a></li>
+            </ul>
+        </nav>
+    </main>
+    <footer>
+        <p>© 2024 Academia Online. Todos os direitos reservados.</p>
+    </footer>
+    <script src="admin.js"></script>
+</body>
+</html>

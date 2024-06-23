@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="stylesLoginCadastro.css">
+</head>
+
+<body>
+    <main class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <nav>
+                <button type="submit">Entrar</button>
+            </nav>
+        </form>
+        <nav>
+            <a href="cadastro.html">Criar conta</a>
+            <a href="admin.html">Admin</a> <!-- Adicionado item de menu Admin -->
+        </nav>
+    </main>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = users.find(user => user.email === email && user.password === password);
+            
+            if (user) {
+                window.location.href = 'telaDoUsuario.html';
+            } else {
+                alert('Email ou senha incorretos!');
+            }
+        });
+    </script>
+</body>
+
+</html>
